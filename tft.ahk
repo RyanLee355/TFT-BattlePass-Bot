@@ -5,7 +5,7 @@
 RCtrl:: 
 { 
 	; Game Settings
-	gameStatus := 0 ; 0=In Menu, 1=In Loading, 2=In Game
+	gameStatus := 2 ; 0=In Menu, 1=In Loading, 2=In Game
 	SingleRun := 0 ; 0=Run Infinitely, 1=Stop after 1 iteration
 
 	; Variables
@@ -22,23 +22,23 @@ RCtrl::
 	; Stages Variables
 	currentStage := 0
 	stage_array := ["Stage_1", "Stage_2", "Stage_3", "Stage_4"]
-	stage_dirPath := "*5 %A_WorkingDir%\Stages\"
+	stage_dirPath := "*5 Stages\"
 
 	; Tactician Level Variables
 	currentLevel := 1
 	tacticianLevel_array := ["Lvl2", "Lvl3", "Lvl4", "Lvl5", "Lvl6", "Lvl7", "Lvl8"]
-	tacticianLevel_dirPath := "*5 %A_WorkingDir%\Levels\"
+	tacticianLevel_dirPath := "*5 Levels\"
 
 	; Gold Balance Variables
 	currentGold := 0
 	currentGold_array := ["10Gold", "20Gold", "30Gold", "40Gold", "50Gold", "60Gold", "70Gold", "80Gold", "90Gold", "100Gold"]
-	currentGold_dirPath := "*5 %A_WorkingDir%\Gold\"
+	currentGold_dirPath := "*5 Gold\"
 
 	; Bench Bought Champion Tracking
 	targetBenchSlot := 1 ; Used to communicate between SELL CHAMP and BUY CHAMP
 	champBench_xCoordsArray := [411, 532, 666, 794, 897, 1007, 1124, 1253, 1369]
 	BenchTracker := [0, 0, 0, 0, 0, 0, 0, 0, 0] ; 9 Slots, defaulted to 0 stars
-	champBench_dirPath := "%A_WorkingDir%\Champs\"
+	champBench_dirPath := "ChampGolds\"
 	champBench_goldArray := ["2Gold", "3Gold", "4Gold", "5Gold"]
 	champValue := 0
 
@@ -119,14 +119,14 @@ RCtrl::
 	}
 
 	AcceptHonor() {
-		if ImageSearch(&Px, &Py, 537, 638, 785, 713, "%A_WorkingDir%\MiscImages\GG.png") {
+		if ImageSearch(&Px, &Py, 537, 638, 785, 713, "MiscImages\GG.png") {
 			moveMouseClick(628, 423, "left", true, , )
 		}
 	}
 
 	AcceptReport() {
-		if ImageSearch(&Px, &Py, 0, 0, 1920, 1080, "%A_WorkingDir%\MiscImages\report.png") or
-			ImageSearch(&Px, &Py, 0, 0, 1920, 1080, "%A_WorkingDir%\MiscImages\report2.png") {
+		if ImageSearch(&Px, &Py, 0, 0, 1920, 1080, "MiscImages\report.png") or
+			ImageSearch(&Px, &Py, 0, 0, 1920, 1080, "MiscImages\report2.png") {
 			moveMouseClick(638, 676, "left", true, , )
 		}
 	}
@@ -155,9 +155,9 @@ RCtrl::
 
 		; How to identify the value of the champ? --> Set to 0, since it will be merged anyways
 		Loop 10 {
-			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\2Star.png") or 
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\2Star1.png") or
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\2Star2.png") {
+			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star.png") or 
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star1.png") or
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star2.png") {
 				canBuy := 1
 				LocationX := ImgX
 				LocationY := ImgY
@@ -213,9 +213,9 @@ RCtrl::
 	CheckAndBuy2Star() {
 		canBuy := false
 		Loop 10 {
-			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\MiscImages\2Star.png") or 
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\MiscImages\2Star1.png") or
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack %A_WorkingDir%\MiscImages\2Star2.png") {
+			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star.png") or 
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star1.png") or
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star2.png") {
 				canBuy := 1
 				LocationX := ImgX
 				LocationY := ImgY
@@ -338,7 +338,7 @@ RCtrl::
 	}
 
 	LevelUp() {
-		if ImageSearch(&FoundImageX, &FoundImageY, 271, 925, 464, 997, "%A_WorkingDir%\Jungle.png") {
+		if ImageSearch(&FoundImageX, &FoundImageY, 271, 925, 464, 997, "Jungle.png") {
 			moveMouseClick(357, 953, "left", true, , )
 			return 0
 		}
@@ -371,7 +371,7 @@ RCtrl::
 	}
 
 	BuyXP() {
-		if ImageSearch(&FoundImageX, &FoundImageY, 273, 924, 467, 998, "%A_WorkingDir%\MiscImages\BuyXP.png") {
+		if ImageSearch(&FoundImageX, &FoundImageY, 273, 924, 467, 998, "MiscImages\BuyXP.png") {
 			moveMouseClick(357, 953, "left", true, , )
 			return 0
 		}
@@ -379,7 +379,7 @@ RCtrl::
 	}
 
 	RefreshChamps() {
-		if ImageSearch(&FoundImageX, &FoundImageY, 251, 985, 482, 1079, "*10 %A_WorkingDir%\MiscImages\Refresh.png") {
+		if ImageSearch(&FoundImageX, &FoundImageY, 251, 985, 482, 1079, "*10 MiscImages\Refresh.png") {
 			moveMouseClick(368, 1031, "left", true, , )
 			return 1
 		}
@@ -417,7 +417,7 @@ RCtrl::
 	}
 
 	CheckCarousel() {
-		if ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "%A_WorkingDir%\MiscImages\Carousel.png") {
+		if ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "MiscImages\Carousel.png") {
 			if Random(0, 1) == 0 {
 				Loop carousel_path1.Length {
 					moveMouseClick(carousel_path1[A_Index][1], carousel_path1[A_Index][2], "right", true, 100, 400)
@@ -433,7 +433,7 @@ RCtrl::
 	}
 
 	SelectAugment() {
-		if ImageSearch(&FoundImageX, &FoundImageY, 0, 0, 1920, 1080, "%A_WorkingDir%\MiscImages\Augment.png") {
+		if ImageSearch(&FoundImageX, &FoundImageY, 0, 0, 1920, 1080, "MiscImages\Augment.png") {
 			Sleep 1000
 			if firstAugment {
 				moveMouseClick(548, 518, "left", true, , )
@@ -484,7 +484,7 @@ RCtrl::
 
 	/* Exit Game */
 	ExitGame() {
-		if ImageSearch(&ImgX, &ImgY, 839, 529, 1088, 600, "%A_WorkingDir%\MiscImages\ExitNow.png") {
+		if ImageSearch(&ImgX, &ImgY, 839, 529, 1088, 600, "MiscImages\ExitNow.png") {
 			moveMouseClick(962, 569, "left", false, , )
 			return 1
 		}
@@ -509,7 +509,7 @@ RCtrl::
 			AcceptMatch()
 
 			/* If detected, that in queue, skip */
-			if ImageSearch(&ImgX, &ImgY, 466, 662, 600, 697, "%A_WorkingDir%\MiscImages\InQueue.png") {
+			if ImageSearch(&ImgX, &ImgY, 466, 662, 600, 697, "MiscImages\InQueue.png") {
 				continue
 			}
 			
@@ -638,8 +638,8 @@ RCtrl::
 			CheckCarousel()
 
 			/* Pick up orbs */
-			if ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "%A_WorkingDir%\MiscImages\Orb1.png") or 
-				ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "%A_WorkingDir%\MiscImages\Orb2.png") {
+			if ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "MiscImages\Orb1.png") or 
+				ImageSearch(&ImgX, &ImgY, 818, 0, 1108, 41, "MiscImages\Orb2.png") {
 				moveMouseClick(ImgX, ImgY, "right", true, , )
 			}
 
