@@ -155,9 +155,9 @@ RCtrl::
 
 		; How to identify the value of the champ? --> Set to 0, since it will be merged anyways
 		Loop 10 {
-			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star.png") or 
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star1.png") or
-				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack 2Star2.png") {
+			if ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star.png") or 
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star1.png") or
+				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star2.png") {
 				canBuy := 1
 				LocationX := ImgX
 				LocationY := ImgY
