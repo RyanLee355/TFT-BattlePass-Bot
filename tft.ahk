@@ -1,4 +1,7 @@
-﻿#MaxThreads 2
+﻿SetWorkingDir A_InitialWorkingDir
+#MaxThreads 2
+
+
 RCtrl:: 
 { 
 	; Game Settings
