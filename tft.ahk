@@ -5,7 +5,7 @@
 RCtrl:: 
 { 
 	; Game Settings
-	gameStatus := 2 ; 0=In Menu, 1=In Loading, 2=In Game
+	gameStatus := 0 ; 0=In Menu, 1=In Loading, 2=In Game
 	SingleRun := 0 ; 0=Run Infinitely, 1=Stop after 1 iteration
 
 	; Variables
@@ -217,8 +217,8 @@ RCtrl::
 				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star1.png") or
 				ImageSearch(&ImgX, &ImgY, 434, 885, 1500, 968, "*25 *TransBlack MiscImages\2Star2.png") {
 				canBuy := 1
-				LocationX := ImgX
-				LocationY := ImgY
+				LocationX := ImgX + 100
+				LocationY := ImgY + 100
 			}
 			Sleep 100
 		}
@@ -518,7 +518,7 @@ RCtrl::
 			PlayAgain()
 			
 
-			if PixelSearch(&Px, &Py, 1790, 20, 1810, 40, 0x291831, 1) { ; Check if in loading screen
+			if ImageSearch(&Px, &Py, 1559, 40, 1912, 339, "MiscImages\InLoading.png") { ; Check if in loading screen
 				gameStatus := 1 ; If in loading screen, set state to loading screen
 				continue
 			}
@@ -531,7 +531,7 @@ RCtrl::
 		}
 		else if gameStatus == 1 { ; In loading screen
 			; PixelSearch returns TRUE if pixel is found
-			if !PixelSearch(&Px, &Py, 1790, 20, 1810, 40, 0x291831, 1) { ; Check if in loading screen
+			if !ImageSearch(&Px, &Py, 1559, 40, 1912, 339, "MiscImages\InLoading.png") { ; Check if in loading screen
 				gameStatus := 2 ; Puts game status into IN-GAME
 			}
 		}
